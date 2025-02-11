@@ -1,0 +1,71 @@
+sources:
+  - name: linkedin
+    enabled: true
+    url_pattern: "https://www.linkedin.com/directory/people-*"
+    scrape_rules:
+      - selector: ".profile-card"
+        fields:
+          name: ".name"
+          title: ".title"
+          location: ".location"
+          industry: ".industry"
+    rate_limit: 3  # requests per second
+    respect_robots: true
+
+  - name: local_business_directories
+    enabled: true
+    url_pattern: "https://www.chamberofcommerce.com/*/business-directory"
+    scrape_rules:
+      - selector: ".business-listing"
+        fields:
+          business_name: ".name"
+          owner: ".owner"
+          contact: ".contact"
+          address: ".address"
+    rate_limit: 2
+    respect_robots: true
+
+  - name: professional_associations
+    enabled: true
+    url_pattern: "https://www.professional-association.com/members/*"
+    scrape_rules:
+      - selector: ".member-card"
+        fields:
+          name: ".member-name"
+          profession: ".profession"
+          location: ".location"
+    rate_limit: 2
+    respect_robots: true
+
+settings:
+  proxy:
+    enabled: true
+    rotation_interval: 300  # seconds
+    proxy_list_path: "config/proxy_list.txt"
+  
+  user_agents:
+    rotation: true
+    use_random: true
+  
+  output:
+    format: 
+      - json
+      - csv
+    directory: "data/leads"
+  
+  database:
+    enabled: true
+    deduplication: true
+    update_existing: true
+  
+  compliance:
+    respect_robots_txt: true
+    rate_limiting: true
+    max_retries: 3
+    retry_delay: 60  # seconds
+    
+  logging:
+    level: INFO
+    file: "logs/scraper.log"
+    rotate: true
+    max_size: 10MB

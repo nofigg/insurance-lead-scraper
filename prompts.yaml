@@ -1,0 +1,52 @@
+lead_qualification:
+  # Prompt for evaluating lead quality
+  quality_check: |
+    Analyze the following lead information and rate its quality on a scale of 1-10:
+    - Demographics: {demographics}
+    - Income Level: {income}
+    - Family Status: {family_status}
+    - Current Insurance Status: {insurance_status}
+    Consider factors like:
+    1. Financial capability
+    2. Life stage
+    3. Family responsibilities
+    4. Current coverage gaps
+
+data_extraction:
+  # Prompt for extracting relevant information
+  contact_info: |
+    Extract the following information from the raw text:
+    - Name
+    - Age
+    - Location
+    - Contact details
+    - Employment status
+    Ensure all extracted information complies with privacy standards.
+
+lead_enrichment:
+  # Prompt for enriching lead data
+  additional_context: |
+    Based on the available information:
+    1. Suggest potential insurance needs
+    2. Identify life events that might trigger insurance needs
+    3. Calculate estimated coverage requirements
+    4. Determine optimal contact timing
+
+compliance_check:
+  # Prompt for ensuring legal compliance
+  verification: |
+    Verify that the collected information:
+    1. Is publicly available
+    2. Doesn't violate privacy laws
+    3. Complies with GDPR/CCPA
+    4. Follows ethical data collection practices
+
+outreach_strategy:
+  # Prompt for generating outreach strategies
+  personalization: |
+    Create a personalized outreach strategy considering:
+    - Lead's demographics
+    - Financial situation
+    - Family composition
+    - Current life stage
+    - Potential pain points
